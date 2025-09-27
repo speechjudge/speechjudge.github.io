@@ -1,0 +1,124 @@
+/***** Table *****/
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+td {
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: #eef6f9;
+}
+
+audio {
+    width: 100%;
+}
+
+/***** pagination *****/
+#pagination {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#pagination .page-guide {
+    font-size: medium;
+    color: #2a6db4;
+    font-weight: bold;
+    margin-right: 5px;
+    text-transform: uppercase;
+}
+
+#pagination button {
+    background-color: #e7f0fa;
+    border: 1px solid #b3d1f3;
+    color: #0056b3;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    margin: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+#pagination button:hover,
+#pagination button:focus {
+    background-color: #d1e5f5;
+    color: #003366;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/***** TOC *****/
+.toc {
+    opacity: 0;
+    transform: translateY(-20px);
+    display: block;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 20vh;
+    background: #f9f9f9;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.toc.active {
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: auto;
+}
+
+.toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.toc li {
+    margin-bottom: 10px;
+}
+
+.toc li a {
+    color: #333;
+    transition: color 0.3s;
+}
+
+.toc li a:hover {
+    color: #555;
+}
+
+
+.toc-h4 {
+    font-weight: bold;
+    padding-left: 0px;
+}
+
+.toc-h5 {
+    padding-left: 30px;
+}
+
+/***** Layout *****/
+#home {
+    width: 100%;
+}

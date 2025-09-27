@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>SpeechJudge</title>
+  <script src="./static/tailwind.js"></script>
+  <script src="./static/vue.global.js"></script>
+  <script src="./static/flowbite.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+      a[href^="http"] {
+        @apply text-blue-500;
+      }
+
+      a:hover {
+        @apply text-blue-700 underline;
+      }
+
+      h1 {
+        @apply mb-6 text-3xl font-bold text-gray-900 text-center;
+      }
+
+      h2 {
+        @apply mb-3 pt-4 text-2xl font-bold tracking-tight text-gray-900;
+      }
+
+      h4 {
+        @apply mb-4 pt-12 text-3xl font-semibold text-gray-900;
+      }
+
+      h5 {
+        @apply mb-3 pt-4 text-2xl font-bold tracking-tight text-gray-900;
+      }
+
+      h6 {
+        @apply mb-3 pt-4 text-xl font-bold tracking-tight text-gray-900;
+      }
+
+      p {
+        @apply mb-4 font-normal text-gray-900 leading-relaxed;
+      }
+    }
+
+    @layer components {
+      .list-select {
+        @apply block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0;
+      }
+
+      .tooltip {
+        position: absolute;
+        text-align: center;
+        padding: 8px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0;
+        border-radius: 8px;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      .text-p {
+        @apply mb-4 font-normal text-gray-900 leading-relaxed;
+      }
+
+      .author {
+        @apply font-medium mr-2 pb-1 text-gray-900 inline-block text-base;
+      }
+
+      .author a {
+          @apply text-gray-900;
+        }
+
+      .affiliation {
+        @apply font-medium mr-2 pb-1 text-gray-900 block text-base;
+      }
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {}
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="app">
+
+    <nav class="bg-white fixed w-full z-20 top-0 start-0 border-gray-200 border-b border-gray-200"
+      style="font-weight: bold;">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
+        <button data-collapse-toggle="navbar-default" type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          aria-controls="navbar-default" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
+
+        <div class="hidden w-full md:block md:w-auto ml-auto" id="navbar-default">
+          <ul
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+            <li>
+              <a href="#home" class="list-select"><b>Home</b></a>
+            </li>
+            <li>
+              <a href="#data" class="list-select"><b>SpeechJudge-Data</b></a>
+            </li>
+            <li>
+              <a href="#eval" class="list-select"><b>SpeechJudge-Eval</b></a>
+            </li>
+            <li>
+              <a href="#grm" class="list-select"><b>SpeechJudge-GRM</b></a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="p-4 mt-24 max-w-screen-xl mx-auto" id="home">
+      <div class="mt-16 mb-8">
+        <h1>SpeechJudge: Towards Human-Level Judgment for Speech Naturalness</h1>
+      </div>
+
+      <div class="max-w-screen-xl mx-auto mt-8 mb-16">
+        <div class="text-center h-2 flex flex-col gap-3">
+        </div>
+
+        <div class="max-w-[900px] mx-auto mt-8 mb-16">
+          <h2>Abstract</h2>
+          <p class="text-p">
+            Aligning large generative models with human feedback is a critical challenge. In speech synthesis, this is
+            particularly pronounced due to the lack of a large-scale human preference dataset, which hinders the
+            development of models that truly align with human perception. To address this, we introduce SpeechJudge, a
+            comprehensive suite comprising a dataset, a benchmark, and a reward model centered on naturalness—one of the
+            most fundamental subjective metrics for speech synthesis. First, we present SpeechJudge-Data, a large-scale
+            corpus of 99k human preference pairs. The dataset is constructed using a diverse set of advanced
+            text-to-speech (TTS) models across multiple languages and expressive styles, with annotations for both
+            intelligibility and pairwise naturalness preference. From this, we establish SpeechJudge-Eval, a challenging
+            benchmark for automated naturalness judgment. Our evaluation reveals that existing metrics and even
+            state-of-the-art AudioLLMs struggle with this task; the best-performing model, Gemini-2.5-Flash, achieves
+            only about 70% agreement with human preferences, highlighting a significant gap for improvement. To bridge
+            this gap, we develop SpeechJudge-GRM, a generative reward model (GRM) based on Qwen2.5-Omni-7B. It is
+            trained on SpeechJudge-Data via a two-stage post-training process: Supervised Fine-Tuning (SFT) with
+            Chain-of-Thought rationales followed by Reinforcement Learning (RL) on challenging cases. SpeechJudge-GRM
+            demonstrates superior performance, achieving 77.2% accuracy (and 79.4% after inference-time scaling @10) on
+            our benchmark compared to a traditional Bradley-Terry reward model (72.7%). Furthermore, SpeechJudge-GRM can
+            be employed as a reward function during the post-training of speech generation models to effectively enhance
+            their naturalness and quality. We will release all resources from this study to facilitate future research
+            in human-aligned speech synthesis.
+
+        </div>
+
+
+        <div class="mt-8 mb-8" id="data">
+          <h4>SpeechJudge-Data</h4>
+          <p>
+            TBD
+          </p>
+
+          <ul class="list-disc pl-6">
+            <li class="mb-2">
+              <b>L1:</b>
+            </li>
+          </ul>
+
+          <p class="mt-4">
+            {{message}}
+
+            <button @click="message = 'You clicked me!'" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+              Click Me
+            </button>
+          </p>
+        </div>
+
+        <div class="mt-8" id="eval">
+          <h4>SpeechJudge-Eval</h4>
+
+        </div>
+
+        <div class="mt-8" id="grm">
+          <h4>SpeechJudge-GRM</h4>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const { createApp, ref } = Vue
+
+    createApp({
+      setup() {
+        const message = ref('Hello Vue 3!')
+
+        return {
+          message
+        }
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+
+</html>
