@@ -9,6 +9,7 @@
   <script src="./static/tailwind.js"></script>
   <script src="./static/vue.global.js"></script>
   <script src="./static/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 
   <style type="text/tailwindcss">
     @tailwind base;
@@ -126,7 +127,9 @@
             <li>
               <a href="#grm" class="list-select"><b>SpeechJudge-GRM</b></a>
             </li>
-
+            <li>
+              <a href="#applications" class="list-select"><b>Applications</b></a>
+            </li>
           </ul>
         </div>
       </div>
@@ -142,54 +145,51 @@
         <div class="text-center h-2 flex flex-col gap-3">
         </div>
 
-        <div class="max-w-[900px] mx-auto mt-8 mb-16">
+        <div class="max-w-[900px] flex flex-col mx-auto mt-8 mb-16">
           <h2>Abstract</h2>
           <p class="text-p">
-            Aligning large generative models with human feedback is a critical challenge. In speech synthesis, this is
-            particularly pronounced due to the lack of a large-scale human preference dataset, which hinders the
-            development of models that truly align with human perception. To address this, we introduce SpeechJudge, a
-            comprehensive suite comprising a dataset, a benchmark, and a reward model centered on naturalness—one of the
-            most fundamental subjective metrics for speech synthesis. First, we present SpeechJudge-Data, a large-scale
-            corpus of 99k human preference pairs. The dataset is constructed using a diverse set of advanced
-            text-to-speech (TTS) models across multiple languages and expressive styles, with annotations for both
-            intelligibility and pairwise naturalness preference. From this, we establish SpeechJudge-Eval, a challenging
-            benchmark for automated naturalness judgment. Our evaluation reveals that existing metrics and even
-            state-of-the-art AudioLLMs struggle with this task; the best-performing model, Gemini-2.5-Flash, achieves
-            only about 70% agreement with human preferences, highlighting a significant gap for improvement. To bridge
-            this gap, we develop SpeechJudge-GRM, a generative reward model (GRM) based on Qwen2.5-Omni-7B. It is
-            trained on SpeechJudge-Data via a two-stage post-training process: Supervised Fine-Tuning (SFT) with
-            Chain-of-Thought rationales followed by Reinforcement Learning (RL) on challenging cases. SpeechJudge-GRM
-            demonstrates superior performance, achieving 77.2% accuracy (and 79.4% after inference-time scaling @10) on
-            our benchmark compared to a traditional Bradley-Terry reward model (72.7%). Furthermore, SpeechJudge-GRM can
-            be employed as a reward function during the post-training of speech generation models to effectively enhance
-            their naturalness and quality. We will release all resources from this study to facilitate future research
-            in human-aligned speech synthesis.
-
+            Aligning large generative models with human feedback is a critical challenge. In
+            speech synthesis, this is particularly pronounced due to the lack of a large-scale
+            human preference dataset, which hinders the development of models that truly
+            align with human perception. To address this, we introduce <b><i>SpeechJudge</i></b>, a comprehensive suite
+            comprising a dataset, a benchmark, and a reward model centered
+            on naturalness—one of the most fundamental subjective metrics for speech synthesis. First, we present
+            <b><i>SpeechJudge-Data</i></b>, a large-scale human feedback corpus
+            of 99K speech pairs. The dataset is constructed using a diverse set of advanced
+            zero-shot text-to-speech (TTS) models across diverse speech styles and multiple
+            languages, with human annotations for both intelligibility and naturalness preference. From this, we
+            establish <b><i>SpeechJudge-Eval</i></b>, a challenging benchmark for
+            speech naturalness judgment. Our evaluation reveals that existing metrics and AudioLLMs struggle with this
+            task; the best-performing model, Gemini-2.5-Flash,
+            achieves less than 70% agreement with human judgment, highlighting a significant
+            gap for improvement. To bridge this gap, we develop <b><i>SpeechJudge-GRM</i></b>,
+            a generative reward model (GRM) based on Qwen2.5-Omni-7B. It is trained on
+            SpeechJudge-Data via a two-stage post-training process: Supervised Fine-Tuning
+            (SFT) with Chain-of-Thought rationales followed by Reinforcement Learning
+            (RL) with GRPO on challenging cases. On the <b><i>SpeechJudge-Eval</i></b> benchmark,
+            the proposed <b><i>SpeechJudge-GRM</i></b> demonstrates superior performance, achieving
+            77.2% accuracy (and 79.4% after inference-time scaling @10) compared to a classic
+            Bradley-Terry reward model (72.7%). Furthermore, SpeechJudge-GRM can be
+            also employed as a reward function during the post-training of speech generation
+            models to facilitate their alignment with human preferences.
+          </p>
+          <span class="italic ml-auto mr-0 text-gray-500 text-sm">Last updated: 2025-09-25</span>
         </div>
 
 
         <div class="mt-8 mb-8" id="data">
           <h4>SpeechJudge-Data</h4>
           <p>
-            TBD
+            The raw dataset consists of 99K human-annotated speech pairs. It is generated using a diverse set of advanced zero-shot TTS models. Each pair is annotated by at least 2 human raters for both intelligibility and naturalness preference.
           </p>
-
-          <ul class="list-disc pl-6">
-            <li class="mb-2">
-              <b>L1:</b>
-            </li>
-          </ul>
-
-          <p class="mt-4">
-            {{message}}
-
-            <button @click="message = 'You clicked me!'" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-              Click Me
-            </button>
+          <img class="py-4 max-w-screen-md mx-auto" src="img/system-ui.png" alt="Annotation System UI">
+          <p>
+            The following diagram illustrates the data split.
           </p>
+          <img class="py-4 max-w-screen-md mx-auto" src="img/data_flow.drawio.svg" alt="Data Flow Diagram">
         </div>
 
-        <div class="mt-8" id="eval">
+        <!-- <div class="mt-8" id="eval">
           <h4>SpeechJudge-Eval</h4>
 
         </div>
@@ -197,6 +197,104 @@
         <div class="mt-8" id="grm">
           <h4>SpeechJudge-GRM</h4>
 
+        </div> -->
+
+        <div class="mt-8" id="applications">
+          <h4>Applications</h4>
+
+          <h5 class="mb-3 pt-4 text-2xl font-bold tracking-tight text-gray-900">A. Post-training on Qwen2.5-0.5B-TTS
+          </h5>
+          <p class="text-p">
+            Compare base model vs. four alignment settings:
+          </p>
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
+            <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 w-1/12" rowspan="2">Prompt Type</th>
+                  <th scope="col" class="px-6 py-3 w-1/12" rowspan="2">Target Language</th>
+                  <th scope="col" class="px-6 py-3 w-1/6" rowspan="2">Prompt</th>
+                  <th scope="col" class="px-6 py-3" colspan="4">Target Text</th>
+                </tr>
+                <tr>
+                  <th scope="col" class="px-6 py-3 w-1/6">Base</th>
+                  <th scope="col" class="px-6 py-3 w-1/6">SpeechJudge-Data</th>
+                  <th scope="col" class="px-6 py-3 w-1/6">SpeechJudge-GRM (offline)</th>
+                  <th scope="col" class="px-6 py-3 w-1/6">SpeechJudge-GRM (online)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template v-for="(item, index) in tts_enhence_data" :key="index">
+                  <tr class="bg-white border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" rowspan="2">{{ item.prompt_type }}
+                    </td>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" rowspan="2">{{
+                      item.target_language }}</td>
+                    <td rowspan="2">
+                      <play-audio :src="item.prompt"></play-audio>
+                    </td>
+                    <td class="px-6 py-4" colspan="4">{{ item.target_text }}</td>
+                  </tr>
+                  <tr class="bg-white border-b hover:bg-gray-50">
+                    <td>
+                      <play-audio :src="item.base"></play-audio>
+                    </td>
+                    <td>
+                      <play-audio :src="item.data"></play-audio>
+                    </td>
+                    <td>
+                      <play-audio :src="item.offline"></play-audio>
+                    </td>
+                    <td>
+                      <play-audio :src="item.online"></play-audio>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mb-3 pt-4 text-2xl font-bold tracking-tight text-gray-900">B. Best-of-N Selection for Qwen2.5-Omni
+            (Talker)</h5>
+          <p class="text-p">
+            Best-of-100 sample selection. GRM outperforms BTRM in human win/tie/lose outcomes.
+          </p>
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
+            <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 w-1/12" rowspan="2">Target Language</th>
+                  <th scope="col" class="px-6 py-3" colspan="3">Target Text</th>
+                </tr>
+                <tr>
+                  <th scope="col" class="px-6 py-3 w-1/4">Random</th>
+                  <th scope="col" class="px-6 py-3 w-1/4">SpeechJudge-BTRM</th>
+                  <th scope="col" class="px-6 py-3 w-1/4">SpeechJudge-GRM</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template v-for="(item, index) in qwen_select_data" :key="index"
+                  class="bg-white border-b hover:bg-gray-50">
+                  <tr>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" rowspan="2">{{
+                      item.target_language }}</td>
+                    <td class="px-6 py-4" colspan="3">{{ item.target_text }}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <play-audio :src="item.random"></play-audio>
+                    </td>
+                    <td>
+                      <play-audio :src="item.btrm"></play-audio>
+                    </td>
+                    <td>
+                      <play-audio :src="item.grm"></play-audio>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -204,14 +302,56 @@
   </div>
 
   <script>
-    const { createApp, ref } = Vue
+    const { createApp, ref, onMounted } = Vue
+
+    const PlayAudio = {
+      props: ['src'],
+      template: `
+        <audio controls class="w-full">
+          <source :src="encodeURIComponent(src)" type="audio/wav">
+          Your browser does not support the audio element.
+        </audio>
+      `,
+      methods: {
+        encodeURIComponent: encodeURIComponent
+      }
+    }
 
     createApp({
+      components: {
+        'play-audio': PlayAudio
+      },
       setup() {
-        const message = ref('Hello Vue 3!')
+        const tts_enhence_data = ref([]);
+        const qwen_select_data = ref([]);
+
+        onMounted(() => {
+          Papa.parse('SpeechJudge_subeval/tts_enhence.csv', {
+            download: true,
+            header: true,
+            complete: (results) => {
+              tts_enhence_data.value = results.data;
+            },
+            error: (error) => {
+              console.error('Error fetching or parsing tts_enhence.csv:', error);
+            }
+          });
+
+          Papa.parse('SpeechJudge_subeval/qwen_select.csv', {
+            download: true,
+            header: true,
+            complete: (results) => {
+              qwen_select_data.value = results.data;
+            },
+            error: (error) => {
+              console.error('Error fetching or parsing qwen_select.csv:', error);
+            }
+          });
+        });
 
         return {
-          message
+          tts_enhence_data,
+          qwen_select_data
         }
       }
     }).mount('#app')
