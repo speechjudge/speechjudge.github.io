@@ -10,6 +10,7 @@
   <script src="./static/vue.global.js"></script>
   <script src="./static/flowbite.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <style type="text/tailwindcss">
     @tailwind base;
@@ -179,20 +180,152 @@
         <div class="mt-8 mb-8" id="data">
           <h4>SpeechJudge-Data</h4>
           <p>
-            The raw dataset consists of 99K human-annotated speech pairs. It is generated using a diverse set of advanced zero-shot TTS models. Each pair is annotated by at least 2 human raters for both intelligibility and naturalness preference.
+            The raw dataset consists of 99K human-annotated speech pairs. It is generated using a diverse set of
+            advanced zero-shot TTS models. Each pair is annotated by at least 2 human raters for both intelligibility
+            and naturalness preference.
           </p>
           <img class="py-4 max-w-screen-md mx-auto" src="img/system-ui.png" alt="Annotation System UI">
+          <img class="py-4 max-w-screen-md mx-auto" src="img/data_distribution.png" alt="Data Distribution">
+          <img class="py-4 max-w-[400px] mx-auto" src="img/data_pairs.png" alt="Data Pairs">
         </div>
 
-        <!-- <div class="mt-8" id="eval">
+        <div class="mt-8" id="eval">
           <h4>SpeechJudge-Eval</h4>
 
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
+            <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
+              <thead class="text-sm text-gray-900 font-bold bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 w-[15%]">Prompt</th>
+                  <th scope="col" class="px-6 py-3 w-[25%]">Target Text</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">Audio A</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">Audio B</th>
+                  <th scope="col" class="px-6 py-3 w-[10%]">A Spell Wrong</th>
+                  <th scope="col" class="px-6 py-3 w-[10%]">B Spell Wrong</th>
+                  <th scope="col" class="px-6 py-3 w-[10%]">Naturalness Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template v-for="(item, index) in eval_data" :key="index">
+                  <tr class="bg-white border-b hover:bg-gray-50">
+                    <td>
+                      <play-audio :src="item.prompt_wav_path"></play-audio>
+                    </td>
+                    <td>{{ item.target_text }}</td>
+                    <td>
+                      <play-audio :src="item.audioA"></play-audio>
+                    </td>
+                    <td>
+                      <play-audio :src="item.audioB"></play-audio>
+                    </td>
+                    <td>
+                      <span
+                        :class="{'text-red-500': item.audioA_spell_wrong === '1', 'text-green-500': item.audioA_spell_wrong === '0'}">
+                        {{ item.audioA_spell_wrong === '1' ? 'Yes' : 'No' }}
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        :class="{'text-red-500': item.audioB_spell_wrong === '1', 'text-green-500': item.audioB_spell_wrong === '0'}">
+                        {{ item.audioB_spell_wrong === '1' ? 'Yes' : 'No' }}
+                      </span>
+                    </td>
+                    <td>{{ item.naturalness_result }}</td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="mt-8" id="grm">
           <h4>SpeechJudge-GRM</h4>
+          <div class="flex flex-col mx-auto mt-8 mb-16 p-6 bg-gray-50 rounded-lg">
+            <div v-if="grm_data.length > 0">
+              <!-- Case selection buttons -->
+              <ul class="flex flex-wrap justify-center mb-6">
+                <li v-for="(item, index) in grm_data" :key="index" class="me-2 mb-2">
+                  <a href="#" @click.prevent="selectGrmEntry(index)"
+                    :class="{'bg-gray-900 text-white hover:text-white': currentGrmIndex === index, 'bg-gray-200 text-gray-800 hover:text-gray-800 hover:bg-gray-300': currentGrmIndex !== index}"
+                    class="inline-flex items-center justify-center min-w-[120px] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium">
+                    <span class="relative">Case {{ index + 1 }}</span>
+                  </a>
+                </li>
+              </ul>
 
-        </div> -->
+              <!-- User Prompt Section -->
+              <div class="flex flex-row">
+                <span class="font-bold text-base text-right pr-4 w-1/6">Prompt</span>
+                <div class="w-5/6">
+                  <div class="flex items-center mb-4">
+                    <p class="text-p m-0">
+                      We are comparing the naturalness of two text-to-speech models' outputs. The models need to speak
+                      the target text accurately and naturally.
+                    </p>
+                  </div>
+                  <p class="text-p">
+                    Target text: {{ currentGrmEntry.target_text }}.
+                  </p>
+                  <strong class="mb-2">Output A:</strong>
+                  <play-audio :src="currentGrmEntry.audioA"></play-audio>
+                  <strong class="mb-2">Output B:</strong>
+                  <play-audio :src="currentGrmEntry.audioB"></play-audio>
+                  <p class="text-p">
+                    Analyze the two output above, and score them with number from 1 to 10.
+                  </p>
+                  <p class="text-p">
+                    Note:
+                  </p>
+                  <p class="text-p">
+                    (1) Please evaluate the naturalness of both audio outputs based on the following criteria: *Prosody
+                    and Intonation*, *Pacing and Rhythm*, *Articulation and Clarity*, and *Overall Naturalness*.
+                  </p>
+                  <p class="text-p">
+                    (2) After conducting a detailed analysis of each criterion, using the following output template to
+                    highlight your conclusion: Output A: X, Output B: X.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Completion Section -->
+              <div class="flex flex-row mt-6">
+                <div class="flex flex-col items-end pr-4 w-1/6">
+                  <span class="font-bold text-base text-right">SpeechJudge-GRM</span>
+                  <!-- Completion selection buttons -->
+                  <ul class="flex flex-col gap-2 mt-3 text-sm">
+                    <li class="me-2">
+                      <a href="#" @click.prevent="selectCompletion(0)"
+                        :class="{'bg-blue-50 text-blue-600 ring-1 ring-blue-600/20': currentCompletionIndex === 0, 'text-gray-600 hover:bg-gray-50 hover:text-gray-900': currentCompletionIndex !== 0}"
+                        class="inline-flex items-center justify-center min-w-[100px] px-3 py-1.5 rounded-lg transition-all duration-200 text-sm">
+                        <span class="relative">Completion 1</span>
+                      </a>
+                    </li>
+                    <li class="me-2">
+                      <a href="#" @click.prevent="selectCompletion(1)"
+                        :class="{'bg-blue-50 text-blue-600 ring-1 ring-blue-600/20': currentCompletionIndex === 1, 'text-gray-600 hover:bg-gray-50 hover:text-gray-900': currentCompletionIndex !== 1}"
+                        class="inline-flex items-center justify-center min-w-[100px] px-3 py-1.5 rounded-lg transition-all duration-200 text-sm">
+                        <span class="relative">Completion 2</span>
+                      </a>
+                    </li>
+                    <li class="me-2">
+                      <a href="#" @click.prevent="selectCompletion(2)"
+                        :class="{'bg-blue-50 text-blue-600 ring-1 ring-blue-600/20': currentCompletionIndex === 2, 'text-gray-600 hover:bg-gray-50 hover:text-gray-900': currentCompletionIndex !== 2}"
+                        class="inline-flex items-center justify-center min-w-[100px] px-3 py-1.5 rounded-lg transition-all duration-200 text-sm">
+                        <span class="relative">Completion 3</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-5/6 text-gray-800">
+                  <div v-html="currentCompletionHtml"></div>
+                </div>
+              </div>
+            </div>
+            <div v-else class="text-center text-gray-500">
+              Loading SpeechJudge-GRM data...
+            </div>
+          </div>
+        </div>
 
         <div class="mt-8" id="applications">
           <h4>Applications</h4>
@@ -204,33 +337,23 @@
           </p>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
             <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <thead class="text-sm text-gray-900 font-bold bg-gray-50">
                 <tr>
-                  <th scope="col" class="px-6 py-3 w-1/12" rowspan="2">Prompt Type</th>
-                  <th scope="col" class="px-6 py-3 w-1/12" rowspan="2">Target Language</th>
-                  <th scope="col" class="px-6 py-3 w-1/6" rowspan="2">Prompt</th>
-                  <th scope="col" class="px-6 py-3" colspan="4">Target Text</th>
-                </tr>
-                <tr>
-                  <th scope="col" class="px-6 py-3 w-1/6">Base</th>
-                  <th scope="col" class="px-6 py-3 w-1/6">SpeechJudge-Data</th>
-                  <th scope="col" class="px-6 py-3 w-1/6">SpeechJudge-GRM (offline)</th>
-                  <th scope="col" class="px-6 py-3 w-1/6">SpeechJudge-GRM (online)</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">Prompt</th>
+                  <th scope="col" class="px-6 py-3 w-[25%]">Target Text</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">Base</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">SpeechJudge-Data</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">SpeechJudge-GRM (offline)</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">SpeechJudge-GRM (online)</th>
                 </tr>
               </thead>
               <tbody>
                 <template v-for="(item, index) in tts_enhence_data" :key="index">
                   <tr class="bg-white border-b hover:bg-gray-50">
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" rowspan="2">{{ item.prompt_type }}
-                    </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" rowspan="2">{{
-                      item.target_language }}</td>
-                    <td rowspan="2">
+                    <td>
                       <play-audio :src="item.prompt"></play-audio>
                     </td>
-                    <td class="px-6 py-4" colspan="4">{{ item.target_text }}</td>
-                  </tr>
-                  <tr class="bg-white border-b hover:bg-gray-50">
+                    <td>{{ item.target_text }}</td>
                     <td>
                       <play-audio :src="item.base"></play-audio>
                     </td>
@@ -251,31 +374,21 @@
 
           <h5 class="mb-3 pt-4 text-2xl font-bold tracking-tight text-gray-900">B. Best-of-N Selection for Qwen2.5-Omni
             (Talker)</h5>
-          <p class="text-p">
-            Best-of-100 sample selection. GRM outperforms BTRM in human win/tie/lose outcomes.
-          </p>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
             <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <thead class="text-sm text-gray-900 font-bold bg-gray-50">
                 <tr>
-                  <th scope="col" class="px-6 py-3 w-1/12" rowspan="2">Target Language</th>
-                  <th scope="col" class="px-6 py-3" colspan="3">Target Text</th>
-                </tr>
-                <tr>
-                  <th scope="col" class="px-6 py-3 w-1/4">Random</th>
-                  <th scope="col" class="px-6 py-3 w-1/4">SpeechJudge-BTRM</th>
-                  <th scope="col" class="px-6 py-3 w-1/4">SpeechJudge-GRM</th>
+                  <th scope="col" class="px-6 py-3 w-[40%]">Target Text</th>
+                  <th scope="col" class="px-6 py-3 w-[20%]">Random</th>
+                  <th scope="col" class="px-6 py-3 w-[20%]">SpeechJudge-BTRM</th>
+                  <th scope="col" class="px-6 py-3 w-[20%]">SpeechJudge-GRM</th>
                 </tr>
               </thead>
               <tbody>
                 <template v-for="(item, index) in qwen_select_data" :key="index"
                   class="bg-white border-b hover:bg-gray-50">
                   <tr>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" rowspan="2">{{
-                      item.target_language }}</td>
-                    <td class="px-6 py-4" colspan="3">{{ item.target_text }}</td>
-                  </tr>
-                  <tr>
+                    <td>{{ item.target_text }}</td>
                     <td>
                       <play-audio :src="item.random"></play-audio>
                     </td>
@@ -297,7 +410,7 @@
   </div>
 
   <script>
-    const { createApp, ref, onMounted } = Vue
+    const { createApp, ref, onMounted, computed } = Vue
 
     const PlayAudio = {
       props: ['src'],
@@ -317,8 +430,36 @@
         'play-audio': PlayAudio
       },
       setup() {
+
         const tts_enhence_data = ref([]);
         const qwen_select_data = ref([]);
+        const eval_data = ref([]);
+        const grm_data = ref([]);
+        const currentGrmIndex = ref(0);
+        const currentCompletionIndex = ref(0);
+
+        const currentGrmEntry = computed(() => {
+          return grm_data.value[currentGrmIndex.value] || {};
+        });
+
+        const currentCompletionHtml = computed(() => {
+          const entry = currentGrmEntry.value;
+          switch (currentCompletionIndex.value) {
+            case 0: return entry.completions1_html;
+            case 1: return entry.completions2_html;
+            case 2: return entry.completions3_html;
+            default: return '';
+          }
+        });
+
+        const selectGrmEntry = (index) => {
+          currentGrmIndex.value = index;
+          currentCompletionIndex.value = 0; // Reset completion index when changing entry
+        };
+
+        const selectCompletion = (index) => {
+          currentCompletionIndex.value = index;
+        };
 
         onMounted(() => {
           Papa.parse('SpeechJudge_subeval/tts_enhence.csv', {
@@ -342,11 +483,48 @@
               console.error('Error fetching or parsing qwen_select.csv:', error);
             }
           });
+
+          Papa.parse('SpeechJudge_eval/eval.csv', {
+            download: true,
+            header: true,
+            complete: (results) => {
+              eval_data.value = results.data;
+            },
+            error: (error) => {
+              console.error('Error fetching or parsing eval.csv:', error);
+            }
+          });
+
+          Papa.parse('SpeechJudge_eval/grm.csv', {
+            download: true,
+            header: true,
+            complete: (results) => {
+              grm_data.value = results.data.map(item => {
+                return {
+                  ...item,
+                  completions1_html: marked.parse(item.completions1 || ''),
+                  completions2_html: marked.parse(item.completions2 || ''),
+                  completions3_html: marked.parse(item.completions3 || '')
+                };
+              }).filter(item => item.target_text); // Filter out empty rows
+            },
+            error: (error) => {
+              console.error('Error fetching or parsing grm.csv:', error);
+            }
+          });
         });
 
         return {
           tts_enhence_data,
-          qwen_select_data
+          qwen_select_data,
+          eval_data,
+          grm_data,
+          currentGrmIndex,
+          currentCompletionIndex,
+          currentGrmEntry,
+          currentCompletionHtml,
+          selectGrmEntry,
+          selectCompletion
         }
       }
     }).mount('#app')

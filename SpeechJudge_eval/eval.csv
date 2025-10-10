@@ -1,0 +1,4 @@
+﻿prompt_wav_path,target_text,audioA,audioB,audioA_spell_wrong,audioB_spell_wrong,naturalness_result
+SpeechJudge_eval/prompt.mp3,"Many people feel the need to disguise their grandiose urges, not only from others but also from themselves. They will frequently make a show of their humility.",SpeechJudge_eval/audioA.wav,SpeechJudge_eval/audioB.wav,0,0,A
+SpeechJudge_eval/prompt.mp3,"Many people feel the need to disguise their grandiose urges, not only from others but also from themselves. They will frequently make a show of their humility.",SpeechJudge_eval/audioA.wav,SpeechJudge_eval/audioB.wav,1,0,A
+SpeechJudge_eval/prompt.mp3,"Many people feel the need to disguise their grandiose urges, not only from others but also from themselves. They will frequently make a show of their humility.",SpeechJudge_eval/audioA.wav,SpeechJudge_eval/audioB.wav,1,1,B
