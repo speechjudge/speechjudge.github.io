@@ -181,8 +181,8 @@
           <h4>SpeechJudge-Data</h4>
           <p>
             The raw dataset consists of 99K human-annotated speech pairs. It is generated using a diverse set of
-            advanced zero-shot TTS models. Each pair is annotated by at least 2 human raters for both intelligibility
-            and naturalness preference.
+            advanced zero-shot TTS models. The User Interface (UI) for annotation is shown below, along with the data
+            distribution.
           </p>
           <img class="py-4 max-w-screen-md mx-auto" src="img/system-ui.png" alt="Annotation System UI">
           <img class="py-4 max-w-screen-md mx-auto" src="img/data_distribution.png" alt="Data Distribution">
@@ -196,10 +196,9 @@
             <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
               <thead class="text-sm text-gray-900 font-bold bg-gray-50">
                 <tr>
-                  <th scope="col" class="px-6 py-3 w-[15%]">Prompt</th>
-                  <th scope="col" class="px-6 py-3 w-[25%]">Target Text</th>
-                  <th scope="col" class="px-6 py-3 w-[15%]">Audio A</th>
-                  <th scope="col" class="px-6 py-3 w-[15%]">Audio B</th>
+                  <th scope="col" class="px-6 py-3 w-[30%]">Target Text</th>
+                  <th scope="col" class="px-6 py-3 w-[20%]">Audio A</th>
+                  <th scope="col" class="px-6 py-3 w-[20%]">Audio B</th>
                   <th scope="col" class="px-6 py-3 w-[10%]">A Spell Wrong</th>
                   <th scope="col" class="px-6 py-3 w-[10%]">B Spell Wrong</th>
                   <th scope="col" class="px-6 py-3 w-[10%]">Naturalness Result</th>
@@ -208,9 +207,6 @@
               <tbody>
                 <template v-for="(item, index) in eval_data" :key="index">
                   <tr class="bg-white border-b hover:bg-gray-50">
-                    <td>
-                      <play-audio :src="item.prompt_wav_path"></play-audio>
-                    </td>
                     <td>{{ item.target_text }}</td>
                     <td>
                       <play-audio :src="item.audioA"></play-audio>
@@ -241,10 +237,10 @@
         <div class="mt-8" id="grm">
           <h4>SpeechJudge-GRM</h4>
           <div class="flex flex-col mx-auto mt-8 mb-16 p-6 bg-gray-50 rounded-lg">
-            <div v-if="grm_data.length > 0">
+            <div v-if="eval_data.length > 0">
               <!-- Case selection buttons -->
               <ul class="flex flex-wrap justify-center mb-6">
-                <li v-for="(item, index) in grm_data" :key="index" class="me-2 mb-2">
+                <li v-for="(item, index) in eval_data" :key="index" class="me-2 mb-2">
                   <a href="#" @click.prevent="selectGrmEntry(index)"
                     :class="{'bg-gray-900 text-white hover:text-white': currentGrmIndex === index, 'bg-gray-200 text-gray-800 hover:text-gray-800 hover:bg-gray-300': currentGrmIndex !== index}"
                     class="inline-flex items-center justify-center min-w-[120px] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium">
@@ -257,31 +253,22 @@
               <div class="flex flex-row">
                 <span class="font-bold text-base text-right pr-4 w-1/6">Prompt</span>
                 <div class="w-5/6">
-                  <div class="flex items-center mb-4">
-                    <p class="text-p m-0">
-                      We are comparing the naturalness of two text-to-speech models' outputs. The models need to speak
-                      the target text accurately and naturally.
-                    </p>
-                  </div>
                   <p class="text-p">
-                    Target text: {{ currentGrmEntry.target_text }}.
+                    We are comparing the naturalness of two text-to-speech models' outputs. The models need to speak the
+                    target text accurately and naturally. <br />
+                    Target text: {{ currentGrmEntry.target_text }}
                   </p>
-                  <strong class="mb-2">Output A:</strong>
-                  <play-audio :src="currentGrmEntry.audioA"></play-audio>
-                  <strong class="mb-2">Output B:</strong>
-                  <play-audio :src="currentGrmEntry.audioB"></play-audio>
+                  <span class="mb-2">Output A:</span>
+                  <play-audio :key="currentGrmEntry.audioA" :src="currentGrmEntry.audioA"></play-audio>
+                  <span class="mb-2">Output B:</span>
+                  <play-audio :key="currentGrmEntry.audioB" :src="currentGrmEntry.audioB"></play-audio>
                   <p class="text-p">
                     Analyze the two output above, and score them with number from 1 to 10.
-                  </p>
-                  <p class="text-p">
-                    Note:
-                  </p>
-                  <p class="text-p">
-                    (1) Please evaluate the naturalness of both audio outputs based on the following criteria: *Prosody
-                    and Intonation*, *Pacing and Rhythm*, *Articulation and Clarity*, and *Overall Naturalness*.
-                  </p>
-                  <p class="text-p">
-                    (2) After conducting a detailed analysis of each criterion, using the following output template to
+                    <br /> Note: <br />
+                    - Please evaluate the naturalness of both audio outputs based on the following criteria: <b>Prosody
+                      and Intonation</b>, <b>Pacing and Rhythm</b>, <b>Articulation and Clarity</b>, and <b>Overall
+                      Naturalness</b>. <br />
+                    - After conducting a detailed analysis of each criterion, using the following output template to
                     highlight your conclusion: Output A: X, Output B: X.
                   </p>
                 </div>
@@ -434,12 +421,11 @@
         const tts_enhence_data = ref([]);
         const qwen_select_data = ref([]);
         const eval_data = ref([]);
-        const grm_data = ref([]);
         const currentGrmIndex = ref(0);
         const currentCompletionIndex = ref(0);
 
         const currentGrmEntry = computed(() => {
-          return grm_data.value[currentGrmIndex.value] || {};
+          return eval_data.value[currentGrmIndex.value] || {};
         });
 
         const currentCompletionHtml = computed(() => {
@@ -488,18 +474,7 @@
             download: true,
             header: true,
             complete: (results) => {
-              eval_data.value = results.data;
-            },
-            error: (error) => {
-              console.error('Error fetching or parsing eval.csv:', error);
-            }
-          });
-
-          Papa.parse('SpeechJudge_eval/grm.csv', {
-            download: true,
-            header: true,
-            complete: (results) => {
-              grm_data.value = results.data.map(item => {
+              eval_data.value = results.data.map(item => {
                 return {
                   ...item,
                   completions1_html: marked.parse(item.completions1 || ''),
@@ -509,16 +484,16 @@
               }).filter(item => item.target_text); // Filter out empty rows
             },
             error: (error) => {
-              console.error('Error fetching or parsing grm.csv:', error);
+              console.error('Error fetching or parsing eval.csv:', error);
             }
           });
+
         });
 
         return {
           tts_enhence_data,
           qwen_select_data,
           eval_data,
-          grm_data,
           currentGrmIndex,
           currentCompletionIndex,
           currentGrmEntry,
