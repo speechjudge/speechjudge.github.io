@@ -189,51 +189,6 @@
           <img class="py-4 max-w-[400px] mx-auto" src="img/data_pairs.png" alt="Data Pairs">
         </div>
 
-        <div class="mt-8" id="eval">
-          <h4>SpeechJudge-Eval</h4>
-
-          <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
-            <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
-              <thead class="text-sm text-gray-900 font-bold bg-gray-50">
-                <tr>
-                  <th scope="col" class="px-6 py-3 w-[30%]">Target Text</th>
-                  <th scope="col" class="px-6 py-3 w-[20%]">Audio A</th>
-                  <th scope="col" class="px-6 py-3 w-[20%]">Audio B</th>
-                  <th scope="col" class="px-6 py-3 w-[10%]">A Spell Wrong</th>
-                  <th scope="col" class="px-6 py-3 w-[10%]">B Spell Wrong</th>
-                  <th scope="col" class="px-6 py-3 w-[10%]">Naturalness Result</th>
-                </tr>
-              </thead>
-              <tbody>
-                <template v-for="(item, index) in eval_data" :key="index">
-                  <tr class="bg-white border-b hover:bg-gray-50">
-                    <td>{{ item.target_text }}</td>
-                    <td>
-                      <play-audio :src="item.audioA"></play-audio>
-                    </td>
-                    <td>
-                      <play-audio :src="item.audioB"></play-audio>
-                    </td>
-                    <td>
-                      <span
-                        :class="{'text-red-500': item.audioA_spell_wrong === '1', 'text-green-500': item.audioA_spell_wrong === '0'}">
-                        {{ item.audioA_spell_wrong === '1' ? 'Yes' : 'No' }}
-                      </span>
-                    </td>
-                    <td>
-                      <span
-                        :class="{'text-red-500': item.audioB_spell_wrong === '1', 'text-green-500': item.audioB_spell_wrong === '0'}">
-                        {{ item.audioB_spell_wrong === '1' ? 'Yes' : 'No' }}
-                      </span>
-                    </td>
-                    <td>{{ item.naturalness_result }}</td>
-                  </tr>
-                </template>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         <div class="mt-8" id="grm">
           <h4>SpeechJudge-GRM</h4>
           <div class="flex flex-col mx-auto mt-8 mb-16 p-6 bg-gray-50 rounded-lg">
