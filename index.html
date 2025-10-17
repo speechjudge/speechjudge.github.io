@@ -123,9 +123,6 @@
               <a href="#data" class="list-select"><b>SpeechJudge-Data</b></a>
             </li>
             <li>
-              <a href="#eval" class="list-select"><b>SpeechJudge-Eval</b></a>
-            </li>
-            <li>
               <a href="#grm" class="list-select"><b>SpeechJudge-GRM</b></a>
             </li>
             <li>
@@ -197,17 +194,10 @@
 
         <div class="mt-8" id="grm">
           <h4>SpeechJudge-GRM</h4>
-          <p>We built <b><i>SpeechJudge-GRM</i></b> based on <b><i>SpeechJudge-Eval</i></b> (comes from
+          <p class="mb-2">We built <b><i>SpeechJudge-GRM</i></b> based on <b><i>SpeechJudge-Eval</i></b> (comes from
             <b><i>SpeechJudge-Data</i></b>), using two main
-            steps: Supervised Fine-Tuning (SFT) and Reinforcement Learning (RL). In the first step, SFT, the model
-            learned why one speech sample sounds more natural than another, using detailed explanations from the
-            Gemini-2.5-Flash model. In the second step, RL, the model was trained to improve by focusing on difficult
-            cases where the teacher model disagreed with human annotators, rewarding the model for matching human
-            preferences.
-          </p>
-
-          <p class="mt-4">Some examples are shown below to illustrate how SpeechJudge-GRM works.</p>
-          <div class="flex flex-col mx-auto mt-8 mb-16 p-6 bg-gray-50 rounded-lg">
+            steps: Supervised Fine-Tuning (SFT) and Reinforcement Learning (RL). Some examples are shown below to illustrate how SpeechJudge-GRM works.</p>
+          <div class="flex flex-col mx-auto mb-16 p-6 bg-gray-50 rounded-lg">
             <div v-if="eval_data.length > 0">
               <!-- Case selection buttons -->
               <ul class="flex flex-wrap justify-center mb-6">
