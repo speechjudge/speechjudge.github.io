@@ -1,123 +1,267 @@
 ﻿prompt_wav_path,target_text,audioA,audioB,audioA_spell_wrong,audioB_spell_wrong,naturalness_result,completions1,completions2,completions3
-SpeechJudge_eval/rlhfv1_expressive_regular/ints/rlhfv1_expressive_000150/prompt.wav,量子计算机预测显示，这一高点将在未来24小时内引发全球金融市场的连锁反应，人工智能交易系统已进入紧急备战状态。,SpeechJudge_eval/rlhfv1_expressive_regular/ints/rlhfv1_expressive_000150/output_recovered_audio_temp0.8.wav,SpeechJudge_eval/rlhfv1_expressive_mistakableText/cosyvoice2/rlhfv1_expressive_000150/output_recovered_audio_temp1.0.wav,1,1,A,"Here's an analysis of the naturalness of the two Text-to-Speech models' outputs:
+SpeechJudge_eval/rlhfv1_expressive_regular/ints/rlhfv1_expressive_004002/prompt.wav,Ei的心，曾经坚定，如今因Makoto的离去而颤抖。每一天，她旧我的一层新皮剥落，显露出在悲伤的熔炉中重生的灵魂。,SpeechJudge_eval/rlhfv1_expressive_regular/ints/rlhfv1_expressive_004002/output_recovered_audio_temp1.05.wav,SpeechJudge_eval/rlhfv1_expressive_regular/cosyvoice2/rlhfv1_expressive_004002/output_recovered_audio_temp0.6.wav,0,0,B,"**Output A Analysis:**
 
-**Analysis:**
-
-1.  **Prosody and Intonation:**
-    *   **Output A:** Exhibits very natural prosody and intonation. The pitch variations are appropriate, conveying a sense of seriousness and delivering the message in a fluent manner.
-    *   **Output B:** Sounds quite flat and lacks natural expressiveness. The intonation is somewhat monotonous, making it sound robotic rather than human.
-
-2.  **Pacing and Rhythm:**
-    *   **Output A:** The pacing is excellent – it's natural, not too fast or slow. The rhythm is consistent, and pauses are well-placed, contributing to overall fluency.
-    *   **Output B:** The pacing is noticeably slower and feels a bit hesitant. The rhythm is disrupted by the unnatural pauses and the significant numerical errors, which severely impacts the flow.
-
-3.  **Articulation and Clarity:**
-    *   **Output A:** Articulation is very clear and precise. Every word is distinct, and there are no noticeable stutters, mumbles, or pronunciation errors.
-    *   **Output B:** This is where Output B significantly falters. The most glaring issue is the mispronunciation of ""24小时"" (èrésì xiǎoshí) as ""按示扫小时"" (àncìsǎo xiǎoshí), which includes incorrect sounds for both the number and the unit. This fundamental error in numerical articulation drastically reduces clarity and makes the output sound very unnatural and erroneous. While other words are generally clear, this specific flaw overshadows any positives.
-
-4.  **Overall Naturalness:**
-    *   **Output A:** Sounds exceptionally natural and human-like. The combination of excellent prosody, natural pacing, and clear articulation makes it highly believable as a human speaker reading the text.
-    *   **Output B:** Sounds distinctly artificial, primarily due to the severe mispronunciation of ""24小时."" This single error, combined with the monotonous prosody and less fluid pacing, makes the output sound unnatural and difficult to understand at that specific point.
-
-**Conclusion:**
-
-Output A is significantly superior in terms of naturalness, demonstrating excellent prosody, pacing, and crystal-clear articulation. Output B suffers from a major critical error in number pronunciation, making it sound highly unnatural and artificial.
-
-**Output A: 9, Output B: 3**","**Analysis:**
-
-Both Text-to-Speech models fail to accurately generate the target text ""未来24小时内"" (wèi lái èr shí yī xiǎo shí nei), which is a critical error that impacts the clarity and overall naturalness of the outputs.
-
-**Output A:**
-*   **Prosody and Intonation:** The intonation is generally natural, with appropriate rising and falling tones for phrases. It avoids a monotonous or robotic delivery.
-*   **Pacing and Rhythm:** The pacing is suitable and not too fast, allowing for clear comprehension of most words.
-*   **Articulation and Clarity:** Most words are clearly articulated. However, the critical flaw lies in the pronunciation of ""24小时"" (èr shí yī xiǎo). The model pronounces ""24"" as ""一七扫"" (yī qī sào) or similar garbled syllables, making this part of the sentence unintelligible and incorrect. This significantly impacts clarity.
-*   **Overall Naturalness:** Despite the otherwise decent prosody and pacing, the severe mispronunciation of ""24"" as ""一七扫"" is highly unnatural and jarring. A listener would not expect this kind of error in a well-generated speech.
-
-**Output B:**
-*   **Prosody and Intonation:** The intonation is less natural compared to Output A. It often sounds somewhat flat or robotic, lacking the dynamic range of human speech. There are instances where the pitch feels unnaturally consistent.
-*   **Pacing and Rhythm:** The pacing is slightly slower and less fluid than Output A, contributing to a somewhat stiff delivery. There are minor pauses that feel unnatural.
-*   **Articulation and Clarity:** Similar to Output A, the model attempts to speak ""24小时"" but fails. It pronounces ""24"" as ""二事四"" (èr shì sì) or a similar mispronunciation. While also incorrect, it is more intelligible than Output A's attempt. The overall articulation of other words is generally clear, though the voice quality can sound slightly artificial.
-*   **Overall Naturalness:** The less natural prosody and pacing, combined with the significant error in ""24小时,"" make Output B sound more robotic and less human-like than Output A. However, its attempt at the problematic word is marginally clearer than A's.
-
-**Conclusion:**
-Both outputs suffer from a critical error in generating the correct pronunciation for ""24小时内,"" making them imperfect. However, Output A generally has better prosody and clearer articulation (except for the major error), while Output B has a slightly more robotic and less fluid delivery. Output A's mispronunciation of ""24"" is particularly jarring.
-
-Output A: 4
-Output B: 3","**Analysis:**
-
-Both Text-to-Speech models struggle significantly with the numerical part ""24小时"" (24 hours) in the target text. This is a critical point that heavily impacts their overall naturalness scores.
-
-**Output A:**
-*   **Prosody and Intonation:** The intonation is relatively flat and lacks natural variation. There's a slight unnatural pause after ""高点"" (gāodiǎn). The overall delivery is somewhat monotonous.
-*   **Pacing and Rhythm:** The pacing is a bit slow and deliberate, making the speech sound less spontaneous.
-*   **Articulation and Clarity:** While most other words are reasonably clear, the critical error ""24小时"" (24 hours) is mispronounced as ""17扫小时内"" (yīqīsǎo xiǎoshíne). This significant misarticulation makes the sentence largely unintelligible at that point and severely impacts clarity.
-*   **Overall Naturalness:** The major mispronunciation of ""24小时"" makes the output highly unnatural and difficult to understand. Even without this specific error, the general prosody and pacing are not very human-like.
-
-**Output B:**
-*   **Prosody and Intonation:** This output demonstrates much better prosody and intonation. The voice has a more natural rise and fall, and the phrasing feels more appropriate for the sentence.
-*   **Pacing and Rhythm:** The pacing is more natural and flowing, contributing to a better rhythm.
-*   **Articulation and Clarity:** Most words are clearly articulated. However, similar to Output A, the ""24小时"" (24 hours) is mispronounced as ""按示四小时内"" (ànshì sì xiǎoshíne). While still incorrect, the pronunciation of this specific error is marginally clearer than Output A's, making it slightly less jarring.
-*   **Overall Naturalness:** Despite the numericalerror, Output B sounds significantly more natural and human-like than Output A due to its superior prosody, pacing, and generally clear articulation.
-
-**Conclusion:**
-
-Both models fail to correctly synthesize the numerical part of the text, which fundamentally impacts their performance. However, Output B demonstrates superior prosody, pacing, and overall voice quality, making its delivery more natural and pleasant to listen to despite the shared flaw.
-
-Output A: 4
-Output B: 6"
-SpeechJudge_eval/rlhfv1_expressive_codeSwitching/ints/rlhfv1_expressive_004520/prompt.wav,The quantum 药房 on this floor utilizes advanced molecular reconstruction 技术 to create personalized medications tailored to your DNA in under 30 seconds.,SpeechJudge_eval/rlhfv1_expressive_codeSwitching/ints/rlhfv1_expressive_004520/output_recovered_audio_temp1.05.wav,SpeechJudge_eval/rlhfv1_expressive_codeSwitching/cosyvoice2/rlhfv1_expressive_004520/output_recovered_audio_temp0.6.wav,0,1,A,"Here's an analysis of the naturalness of both audio outputs:
-
-**Output A:**
-*   **Prosody and Intonation:** The prosody is relatively flat and lacks natural variation in pitch and stress. The speech sounds somewhat monotonous, giving it a robotic quality.
-*   **Pacing and Rhythm:** The pacing is uniform and a bit slow, lacking the natural ebb and flow of human speech. There are no natural pauses or accelerations.
-*   **Articulation and Clarity:** Articulation is generally clear for the English words. However, the pronunciation of the Chinese characters ""药房"" (yàofáng) as ""yoffong"" and ""技术"" (jìshù) as ""tishu"" is significantly inaccurate and jarring, greatly detracting from clarity and naturalness for a native Chinese speaker.
-*   **Overall Naturalness:** The output sounds distinctly artificial due to its flat prosody and the mispronunciation of the Chinese terms. While the English words are discernible, the overall listening experience is not very human-like.
-
-**Output B:**
-*   **Prosody and Intonation:** This output demonstrates significantly better prosody and intonation. There's a natural rise and fall in pitch, and stress is applied more appropriately, making the speech sound more expressive and engaging.
-*   **Pacing and Rhythm:** The pacing is natural and varied, mimicking human speech more closely. There are appropriate pauses that enhance clarity and meaning.
-*   **Articulation and Clarity:** While the pronunciation of the Chinese characters ""药房"" (yàofáng) as ""naafum"" and ""技术"" (jìshù) as ""gee-shoo"" is still not entirely accurate (especially the initial 'n' sound for ""naafum""), the articulation of the English words is very clear and distinct. The overall clarity of the English speech is excellent.
-*   **Overall Naturalness:** Despite the minor inaccuracies in Chinese pronunciation, Output B sounds remarkably more natural and human-like than Output A. Its superior prosody, pacing, and clarity for the English segments make for a much more pleasant and natural listening experience.
-
-**Conclusion:**
-Output A: 4
-Output B: 7","Here's an analysis of the naturalness of the two Text-to-Speech models' outputs:
-
-**Output A Analysis:**
-
-*   **Prosody and Intonation:** The intonation is largely flat and lacks dynamic range. Phrases often end with an unnatural rising or flat tone, making the speech sound robotic rather than conversational. For example, ""on this floor"" and ""under 30 seconds"" lack natural human intonation.
-*   **Pacing and Rhythm:** The pacing is slow and deliberate, which can make the speech sound somewhat stilted. There are pauses that feel slightly artificial rather than naturally occurring. The overall rhythm is disjointed, lacking the smooth flow of human speech.
-*   **Articulation and Clarity:** Articulation of English words is generally clear, though some ""s"" sounds are slightly sibilant (""utilizes,"" ""seconds""). The pronunciation of the Chinese words ""药房"" and ""技术"" is a significant issue; ""药房"" is mispronounced as ""yo-fong,"" and ""技术"" is severely mispronounced as ""tee-jool,"" making them largely unintelligible to a native Chinese speaker.
-*   **Overall Naturalness:** This output sounds distinctly like a synthesized voice. While the English is mostly understandable, the severe mispronunciation of the Chinese words and the flat, robotic prosody significantly detract from its naturalness, making it sound disjointed and artificial.
+*   **Prosody and Intonation:** The intonation is generally acceptable but lacks the emotional depth required for the text. While ""颤抖"" (trembling) and ""重生的的灵魂"" (reborn soul) carry some emotional weight, the overall delivery feels somewhat flat and monotonic in places. The phrase ""悲伤的熔炉"" is pronounced quite quickly, and the pitch variation is limited, detracting from its naturalness.
+*   **Pacing and Rhythm:** The pacing is mostly consistent but occasionally feels slightly rushed, especially in the latter part of the sentence. Pauses are not always optimally placed, leading to a somewhat choppy rhythm rather than a smooth, natural flow.
+*   **Articulation and Clarity:** Most words are clearly articulated. There are no significant issues with clarity, and both Chinese and the foreign name ""Makoto"" are pronounced distinctly. ""Makoto"" is pronounced quite well.
+*   **Overall Naturalness:** Output A sounds like a good quality TTS model, but it doesn't fully capture the emotional nuances of the text. The delivery comes across as a bit mechanical, lacking the subtle variations in pitch and rhythm that human speech has.
 
 **Output B Analysis:**
 
-*   **Prosody and Intonation:** This output demonstrates significantly more natural prosody and intonation compared to Output A. The pitch variations are more dynamic and appropriate for the sentence structure, conveying a more human-like expression, especially during phrases like ""on this floor utilizes advanced molecular reconstruction"" and ""tailored to your DNA.""
-*   **Pacing and Rhythm:** The pacing is generally more natural and fluid, closer to human speech. There's a better sense of rhythm and flow, although some words (like ""personalized"") can feel slightly rushed or elongated, and there's a minor stutter on ""DNA"" (sounding like ""DNAA"") that slightly breaks the otherwise good flow.
-*   **Articulation and Clarity:** Articulation of English words is quite clear, with minimal sibilance. Similar to Output A, the pronunciation of the Chinese words ""药房"" and ""技术"" is a significant flaw; ""药房"" is mispronounced as ""na-farm,"" and ""技术"" is mispronounced as ""gee-shoo,"" which is slightly better than A but still inaccurate and unnatural. Despite this, the overall clarity of the English text is superior to Output A.
-*   **Overall Naturalness:** Output B sounds considerably more human-like due to its superior prosody and pacing for the English segments. While it suffers from major mispronunciations of the Chinese words, the voice's expressive qualities and human-like flow in the English parts make it much more natural overall than Output A. The minor pronunciation issues are still a drawback, but its overall delivery style is a strong indicator of higher naturalness.
-
---
+*   **Prosody and Intonation:** This output demonstrates significantly better prosody and intonation. The emotional content, particularly in phrases like ""如今因Makoto的离去而颤抖"" (trembling due to the loss of Makoto) and ""悲伤的熔炉中重生的灵魂"" (in the furnace of sorrow, reborn soul), is conveyed effectively. There's good rise and fall in pitch, highlighting key words and conveying the text's melancholic and empowering tone.
+*   **Pacing and Rhythm:** The pacing is well-controlled and natural. Pauses are better placed, making the speech flow more smoothly and feel more human. It avoids sounding rushed while maintaining clarity.
+*   **Articulation and Clarity:** Articulation is excellent, with each word and sound being very clear and distinct. The pronunciation of ""Makoto"" is very natural as an imported name.
+*   **Overall Naturalness:** Output B is notably more natural and expressive than Output A. It handles the emotional content of the text much more effectively, making the speech sound much less synthetic and more akin to a human speaker. The subtle shifts in tone and pacing contribute to a highly natural listening experience.
 
 **Conclusion:**
 
-Output A: 4
-Output B: 6","**Analysis:**
+Output B is superior in naturalness due to its better prosody, pacing, and emotional conveyance.
+
+Output A: 7
+Output B: 9","**Analysis:**
 
 **Output A:**
-*   **Prosody and Intonation:** The intonation is largely flat and lacks natural variations. The overall tone sounds monotone, giving it an artificial feel. There's little to no emphasis on key words or phrases.
-*   **Pacing and Rhythm:** The pacing is relatively consistent but feels somewhat robotic and lacks human-like rhythm. There are no obvious awkward pauses, but the speech doesn't flow naturally.
-*   **Articulation and Clarity:** English words are generally clear, but there is a noticeable synthetic background hiss. The pronunciation of the Chinese words ""药房"" (yàofáng) and ""技术"" (jìshù) is very mispronounced and almost unintelligible (""yelfong"" and ""teejul""), severely impacting the clarity of the overall message.
-*   **Overall Naturalness:** The combination of flat prosody, consistent but unnatural rhythm, and highly mispronounced foreign words makes this output sound distinctly artificial and unnatural.
+*   **Prosody and Intonation:** The intonation is noticeably flat and lacks the emotional depth required for the text. Phrases like ""曾经坚定"" (once firm) and ""颤抖"" (trembling) do not convey the corresponding emotions effectively. The overall pitch variation is minimal, making the speech sound somewhat monotonous.
+*   **Pacing and Rhythm:** The pacing is a bit inconsistent, at times feeling rushed, especially towards the end of sentences (""重生的灵魂""). Pauses are generally present but occasionally feel abrupt or slightly off-kilter, contributing to a less natural flow.
+*   **Articulation and Clarity:** Articulation is generally clear, and all words are discernible. There are no major issues with pronunciation or clarity.
+*   **Overall Naturalness:** The output sounds somewhat robotic due to the lack of emotional expression and the somewhat flat prosody. While understandable, it does not fully capture the human-like nuances of emotion and rhythm.
 
 **Output B:**
-*   **Prosody and Intonation:** This output attempts more variation than A but often results in exaggerated or unnatural intonation. The voice has a noticeable, almost caricatured ""deep"" quality. There's a slight lisp on the ""s"" sound. The emphasis on words like ""quantum"" and "" personalized"" feels a bit forced.
-*   **Pacing and Rhythm:** The pacing is quite slow and deliberate, with frequent and sometimes prolonged pauses that break the natural flow of speech. This creates a disjointed and less fluid listening experience.
-*   **Articulation and Clarity:** While most English words are clear, the voice's timbre (a deep, slightly resonant quality) and the pronounced vocalizations/digestions (especially at the end of phrases, e.g., ""DNAA"") detract from clarity. Critically, the pronunciation of ""药房"" (yàofáng) is completely off (""na-farm""), and ""技术"" (jìshù) is also significantly mispronounced (""gie-shoo""), making these crucial parts of the text unintelligible.
-*   **Overall Naturalness:** Despite trying to sound more expressive, Output B falls short due to its exaggerated prosody, slow and choppy pacing, distracting voice timbre, and unnatural vocalizations. The severe mispronunciations of the Chinese words further diminish its naturalness.
+*   **Prosody and Intonation:** This output demonstrates significantly better prosody and intonation. The pitch variations are more natural, conveying the emotional context of ""trembling"" and ""rebirth"" more effectively. The intonation patterns feel more aligned with human speech, making the delivery more engaging and expressive.
+*   **Pacing and Rhythm:** The pacing is more measured and natural, allowing the listener to comfortably follow the narrative. Pauses are well-placed, contributing to a smooth and coherent rhythm. The flow of speech feels more organic and less mechanical.
+*   **Articulation and Clarity:** Articulation is excellent, with clear and crisp pronunciation of all words. There are no issues with clarity or intelligibility.
+*   **Overall Naturalness:** This output sounds much more natural and human-like. The improved prosody, pacing, and emotional conveyance make it highly pleasant to listen to and effectively communicate the meaning and emotion of the text.
 
 **Conclusion:**
-Both outputs struggle significantly with the naturalness of code-switched Chinese words. Output A is consistently robotic and mispronounces the Chinese words severely, making them almost unrecognizable. Output B attempts more expressive prosody but also significantly mispronounces the Chinese words, and its pacing and voice characteristics are less natural than A's. Output A, despite its robotic tone, is marginally more understandable in its Chinese word attempts (they are wrong, but ""yelfong"" is closer to ""yofang"" than ""teejul"" for ""yàofáng"") and has less jarring voice quality overall. Output B is jarringly over-dramatized.
+Output A: 6
+Output B: 8","**Analysis of Output A:**
+*   **Prosody and Intonation:** The intonation is relatively flat and lacks the natural variations found in human speech. Phrases like ""颤抖"" do not convey the full emotional weight. The overall melodic contour is somewhat monotonous, making it sound less engaging and more robotic.
+*   **Pacing and Rhythm:** The pacing is consistent but leans towards being a bit too fast and lacks natural pauses or rhythmic variations that would enhance clarity and emotional depth. It feels slightly rushed.
+*   **Articulation and Clarity:** Articulation is generally clear, and all words are discernible. No significant mispronunciations were noted. However, the pronunciation of ""Makoto"" could be a little clearer.
+*   **Overall Naturalness:** Output A sounds like a competent TTS model, but it struggles to convey the emotional nuances of the text. The lack of dynamic prosody and varied rhythm contributes to a somewhat artificial or ""reading out loud"" feel, rather than a natural human delivery.
+
+**Analysis of Output B:**
+*   **Prosody and Intonation:** Output B demonstrates significantly more natural prosody and intonation. The voice conveys appropriate emotional weight for words like ""颤抖"" and ""重生的灵魂,"" giving the impression of sadness and rebirth. The pitch contours are well-varied and contribute effectively to the meaning and emotional tone of the sentences.
+*   **Pacing and Rhythm:** The pacing is very well-managed, with natural pauses that allow for comprehension and add to the emotional resonance. The rhythm is smooth and fluid, closely mimicking human speech patterns.
+*   **Articulation and Clarity:** Articulation is excellent. Words are crisp, clear, and distinct. The pronunciation of ""Makoto"" is also more pronounced and clear than in Output A.
+*   **Overall Naturalness:** Output B sounds remarkably natural and human-like. The combination of excellent prosody, natural pacing, and clear articulation results in an output that not only communicates the text but also effectively conveys its underlying emotional meaning. It is much more engaging and pleasant to listen to.
+
+**Conclusion:**
+Output A: 6
+Output B: 8"
+SpeechJudge_eval/rlhfv1_expressive_codeSwitching/ints/rlhfv1_expressive_001028/prompt.wav,恨意如潮，汹涌澎湃。吾欲将过路之人，尽数拖入这endless hell，与我同受这eternal torment。奈何桥上，Yellow Spring Road旁，皆是我复仇之场。,SpeechJudge_eval/rlhfv1_expressive_codeSwitching/ints/rlhfv1_expressive_001028/output_recovered_audio_temp1.0.wav,SpeechJudge_eval/rlhfv1_expressive_codeSwitching/cosyvoice2/rlhfv1_expressive_001028/output_recovered_audio_temp1.2.wav,0,0,A,"Here's a detailed analysis of the two outputs:
+
+**Output A:**
+
+1.  **Prosody and Intonation:** The prosody is generally good, capturing the dark and ominous tone of the text. The speaker conveys the sense of ""恨意如潮，汹涌澎湃"" effectively. The pronunciation of ""endless hell"" and ""eternal torment"" is natural and blended well with the Chinese. However, there are moments, especially towards the end with ""皆是我复仇之场"", where the intonation becomes slightly over-exaggerated, bordering on dramatic rather than purely natural.
+2.  **Pacing and Rhythm:** The pacing is natural and appropriate. The pauses are well-placed, allowing for comprehension without feeling rushed or overly slow. The rhythm flows smoothly, contributing to a good listening experience.
+3.  **Articulation and Clarity:** Articulation is excellent. Every word is clear, and there is no ambiguity. The English words are pronounced distinctly and integrated very well.
+4.  **Overall Naturalness:** Output A delivers a highly natural-sounding speech that effectively conveys the grim atmosphere of the text without sounding overly theatrical. The voice quality is consistent, and the emotional delivery, while good, maintains a good balance of naturalness.
+
+**Output B:**
+
+1.  **Prosody and Intonation:** This is the weakest aspect of Output B. The intonation is often unnatural, with a noticeable ""sing-songy"" quality, especially in the opening lines. The emphasis on certain syllables or phrases (""澎湃"", ""拖入"", ""受"") feels inconsistent and sometimes forced, giving away its synthetic nature.
+2.  **Pacing and Rhythm:** The pacing is noticeably slow, making the speech sound deliberate and sometimes robotic. There are unnatural pauses that break the flow, such as the distinct pause before ""奈何桥上"". The rhythm lacks the fluidity found in natural human speech.
+3.  **Articulation and Clarity:** While individual words are generally clear and well-articulated (including the English terms), the overall delivery is hampered by the issues in prosody and pacing.
+4.  **Overall Naturalness:** Output B sounds significantly less natural than Output A. The artificiality in prosody and the slow, deliberate pacing are very prominent, making it sound more like an older-generation TTS system rather than a human voice.
+
+---
+
+**Conclusion:**
+Output A: 8
+Output B: 4","**Analysis:**
+
+**Output A:**
+*   **Prosody and Intonation:** Output A demonstrates a good attempt at conveying the dramatic and menacing tone of the text. The pitch variations are generally appropriate for the context, especially for phrases like ""汹涌澎湃"", ""endless hell"", and ""eternal torment"". There's an expressive quality that adds to the naturalness.
+*   **Pacing and Rhythm:** The pacing is mostly natural, though there are a couple of instances where the pauses feel slightly extended (e.g., after ""hell"" at 0:07 and ""torment"" at 0:10), which can slightly disrupt the natural flow. However, for the most part, the rhythm is well-maintained.
+*   **Articulation and Clarity:** The Chinese words are articulated clearly. The English words (""endless hell"", ""eternal torment"", ""Yellow Spring Road"") are pronounced with a distinct Chinese accent, which is common for mixed-language TTS, but they remain intelligible. There are no muddled sounds or significant clarity issues.
+*   **Overall Naturalness:** Output A feels relatively natural. The expressive intonation and clear articulation contribute positively. The minor issues with pacing and the distinct (though understandable) accent of the English words are the main limitations.
+
+**Output B:**
+*   **Prosody and Intonation:** Output B also attempts to convey emotion, but the execution often feels exaggerated and somewhat unnatural. The intonation patterns can be overly dramatic, with prolonged vowels and unnatural shifts in pitch that sound more ""performed"" than naturally spoken. This can detract from the overall naturalness.
+*   **Pacing and Rhythm:** The pacing in Output B is significantly slower than Output A. This slow pace, combined with the overly dramatic intonation, makes the rhythm feel very unnatural and deliberate, lacking the fluid flow of human speech.
+*   **Articulation and Clarity:** The Chinese words are articulated clearly, similar to Output A. However, the English words (same as A) are pronounced with a very pronounced Chinese accent. While clear, when combined with the slower, exaggerated pacing, it tends to make the English words sound like a slower, more heavily accented reading rather than truly seamlessly mixed into the flow.
+*   **Overall Naturalness:** Output B, despite its effort to convey intensity, sounds less natural due to its overly dramatic prosody, very slow pace, and somewhat disjointed rhythm. It gives a stronger sense of a machine attempting to mimic human emotion rather than truly achieving it.
+
+---
+
+**Conclusion:**
+Output A: 7
+Output B: 5","**Detailed Analysis:**
+
+**Output A:**
+*   **Prosody and Intonation:** The model demonstrates good control over emotional emphasis for most of the output. For example, ""汹涌澎湃"" and ""皆是我复仇之场"" convey a sense of power and determination. However, there are moments, such as the ending of ""endless hell"" (0:07.5) and ""eternal torment"" (0:09.8), where the tail of the intonation drops unnaturally slowly, almost dragging. These instances detract from the otherwise commendable overall prosody.
+*   **Pacing and Rhythm:** The pacing is generally natural and consistent, avoiding overly fast or slow segments. Pauses are mostly appropriate, contributing to the natural flow of the speech. The rhythm is smooth, making it easy to follow.
+*   **Articulation and Clarity:** Articulation is excellent. Both Chinese characters and embedded English words (""endless,"" ""eternal,"" ""Yellow Spring Road"") are pronounced with high clarity and accuracy. There are no noticeable mispronunciations. The speaker’s voice quality is rich and resonant.
+*   **Overall Naturalness:** Output A sounds largely natural and human-like. The voice embodies the intense tone of the text very well. While一小部分 unnatural intonation (like the slow drops at the end of words) does detract slightly, the overall delivery is strong and consistent, making it highly intelligible and engaging for the most part.
+
+**Output B:**
+*   **Prosody and Intonation:** The intonation in Output B is much less natural. Many phrases end with a stretched ""ai"" sound (e.g., ""澎湃 AI"", ""受这AI"", ""面容AI"", ""场AI""), which sounds highly artificial and disjointed. This creates a mechanical and non-human-like, almost sing-songy, rhythm throughout sections of the speech.
+*   **Pacing and Rhythm:** Due to the unusual unnatural elongations of vowels, the pacing feels slower, more deliberate, and less spontaneous than Output A. The rhythm is significantly disrupted, making the speech flow awkwardly and sound like a robot attempting to mimic human speech patterns without understanding natural cadence.
+*   **Articulation and Clarity:** While individual words are mostly clear, the unnatural stretching of vowels significantly impacts the naturalness of some instances. The Chinese pronouns ""人"", ""这"", ""桥"", ""场"" are consistently followed by an unnatural ""ai"" sound, which makes the pronunciation sound incorrect and jarring.
+*   **Overall Naturalness:** Output B sounds significantly less natural. The consistent and pronounced artificiality in intonation, particularly the unnatural stretching of vowels, makes the output sound machine-generated. It struggles to convey the strong emotional connotations of the text and exhibits a pronounced lack of human-like speech characteristics.
+
+---
+
+**Conclusion:**
+Output A demonstrates a much higher level of naturalness across all criteria, especially in prosody and articulation. Output B suffers from significant artificiality, particularly with unnatural vowel stretching, rendering it sound distinctly non-human.
+
+Output A: 7
+Output B: 4"
+SpeechJudge_eval/rlhfv1/ar_soundstorm/rlhfv1_006000-rlhfv1_006999/rlhfv1_006766/prompt.mp3,"Next time, we'll discuss how to initiate conversations and explore talking points for language learners. Most people don’t like to hear this, but consistent hard work is one of the most significant factors in achieving language learning success. The course or method you choose also plays a role, but ultimately, your progress depends on the effort you invest.",SpeechJudge_eval/rlhfv1/f5tts/rlhfv1_006000-rlhfv1_006999/rlhfv1_006766/output_recovered_audio_dur1.1.wav,SpeechJudge_eval/rlhfv1/ar_soundstorm/rlhfv1_006000-rlhfv1_006999/rlhfv1_006766/output_recovered_audio_temp0.4.wav,0,0,B,"Here's a detailed analysis of the naturalness of both Text-to-Speech model outputs:
+
+**Output A:**
+
+*   **Prosody and Intonation:** The model attempts to vary pitch and intonation to mimic natural speech, especially in the initial phrases. However, this often goes overboard or feels somewhat exaggerated. Phrases like ""most significant factors"" have overly pronounced stress. The intonation sometimes drops off too sharply at the end of phrases, disrupting the flow.
+*   **Pacing and Rhythm:** This is the weakest aspect of Output A. The pacing is very choppy, with frequent, unnatural pauses *within* sentences and phrases (e.g., ""next time, we'll discuss,"" ""but ultimately, your progress depends""). These pauses break the rhythm and make the speech sound disjointed and robotic, rather than a continuous flow of thought.
+*   **Articulation and Clarity:** Articulation is generally clear and words are easily understandable. There are no major issues with pronunciation.
+*   **Overall Naturalness:** Despite clear articulation, the unnatural pacing and rhythm, combined with somewhat artificial-sounding intonation, significantly detract from the overall naturalness. It sounds like a machine trying to emulate human speech but failing due to its rigid and broken rhythm.
+
+**Output B:**
+
+*   **Prosody and Intonation:** Output B demonstrates much more natural and appropriate prosody. The intonation rises and falls in a way that feels conversational and conveys meaning effectively without being exaggerated. Emphasis on key words (e.g., ""significant factors,"" ""consistent hard work"") is well-placed and sounds natural.
+*   **Pacing and Rhythm:** The pacing is smooth, consistent, and natural. There are appropriate pauses at natural linguistic boundaries, allowing for clear comprehension without breaking the flow of the sentences. The rhythm is fluid and engaging.
+*   **Articulation and Clarity:** Articulation is excellent, crisp, and clear. All words are easily understood, and there are no instances of mumbling or distortion.
+*   **Overall Naturalness:** Output B sounds remarkably natural and human-like. The combination of excellent prosody, natural pacing, and clear articulation results in a very high level of naturalness that makes it pleasant to listen to.
+
+---
+
+**Conclusion:**
 
 Output A: 4
-Output B: 3"
+Output B: 9","Output A: 3, Output B: 9
+
+**Analysis:**
+
+**Output A:**
+*   **Prosody and Intonation:** The prosody is highly unnatural. There are frequent, long, and awkward pauses within sentences, breaking the natural flow and making the speech sound very disjointed and robotic. The intonation patterns often feel forced or over-exaggerated on certain words,而不合理地忽略其他词的重音，导致整体情感和意义传达不准确。For example, ""discuss how to initiate conversations"" is delivered very choppy.
+*   **Pacing and Rhythm:** The pacing is extremely slow and inconsistent, primarily due to the excessive and unnatural pauses. This severely disrupts the rhythm and makes it difficult to follow the narrative smoothly. It sounds like words are being pronounced in isolation rather than as part of a coherent phrase.
+*   **Articulation and Clarity:** Individual words are generally clear, but the overall clarity and comprehensibility are hampered by the poor pacing and prosody.
+*   **Overall Naturalness:** The output sounds very artificial and machine-like, similar to older TTS systems. The unnatural pauses and robotic intonation make it far from human-like.
+
+**Output B:**
+*   **Prosody and Intonation:** The prosody and intonation are very natural and conversational. The model effectively captures the nuances of human speech, with appropriate pitch variations, stress, and emphasis on key words (e.g., ""significant factors,"" ""consistent hard work""). Phrases flow smoothly into one another.
+*   **Pacing and Rhythm:** The pacing is natural and consistent, maintaining a good rhythm throughout the text. Pauses are well-placed, occurring at natural clause boundaries or for emphasis, rather than being frequent, arbitrary breaks in the speech.
+*   **Articulation and Clarity:** The articulation is excellent. All words are clear, distinct, and easy to understand without any noticeable mumbling or mispronunciations.
+*   **Overall Naturalness:** This output sounds highly natural, almost indistinguishable from human speech. It provides a smooth, engaging, and easily understandable listening experience.","**Analysis:**
+
+**Output A:**
+*   **Prosody and Intonation:** This output struggles significantly with natural prosody and intonation. The voice often sounds flat or robotic, especially in longer phrases, lacking the natural rise and fall of human speech. There are instances where individual words are pronounced with an unnatural emphasis or stretching (e.g., ""invest""), and the intonation at the end of sentences sometimes feels off, like a questioning tone where none is intended.
+*   **Pacing and Rhythm:** The pacing is highly inconsistent and unnatural. There are frequent, unusually long, and awkward pauses within sentences and even mid-word (""consistent har dwork,"" ""sign if icant fac tors""). This fragmentation severely disrupts the flow and makes the speech very difficult to follow naturally. It sounds like the model is processing word by word rather than phrase by phrase.
+*   **Articulation and Clarity:** While most individual words are audibly clear, the unnatural pacing and prosody make the overall clarity and naturalness suffer. The stretching of certain sounds also detracts from clarity.
+*   **Overall Naturalness:** Output A sounds distinctly synthetic and robotic. The combination of unnatural pauses, inconsistent pacing, and stiff, often misplaced, intonation makes it sound like an outdated TTS model, far from natural human speech.
+
+**Output B:**
+*   **Prosody and Intonation:** This output demonstrates very good prosody and intonation. The voice has natural peaks and valleys, conveying appropriate emphasis and emotional tone. It flows smoothly and sounds much more akin to a human speaker, making it easy to listen to.
+*   **Pacing and Rhythm:** The pacing is consistent and natural, mirroring human conversational speed. Pauses are well-placed, aiding in comprehension rather than disrupting it. The overall rhythm is smooth and coherent.
+*   **Articulation and Clarity:** Articulation is excellent. Every word is clear and crisp, contributing to high overall clarity.
+*   **Overall Naturalness:** Output B is highly natural and realistic. It approaches human-like speech quality, with very few, if any, noticeable artificialities. It's significantly more pleasant and understandable than Output A.
+
+**Conclusion:**
+Output A: 3
+Output B: 8.5"
+SpeechJudge_eval/rlhfv1/maskgct/rlhfv1_009000-rlhfv1_009999/rlhfv1_009801/prompt.mp3,那么在运维上，你的策略是什么？以及是否有持续性等等。,SpeechJudge_eval/rlhfv1/cosyvoice2/rlhfv1_009000-rlhfv1_009999/rlhfv1_009801/output_recovered_audio_temp1.2.wav,SpeechJudge_eval/rlhfv1/maskgct/rlhfv1_009000-rlhfv1_009999/rlhfv1_009801/output_recovered_audio_dur0.8.wav,0,0,A,"Output A: 9.5, Output B: 7
+
+**Detailed Analysis:**
+
+**Output A:**
+*   **Prosody and Intonation:** The prosody and intonation are excellent. The questions ""你的策略是什么？"" and ""是否有持续性等等？"" are delivered with very natural rising and falling tones of inquiry. The emphasis on key words feels appropriate, and the overall intonation sounds genuinely human.
+*   **Pacing and Rhythm:** The pacing is well-controlled and natural, neither too fast nor too slow. There are suitable brief pauses that contribute to a natural rhythm, making the speech flow smoothly and effortlessly.
+*   **Articulation and Clarity:** Articulation is exceptionally clear. Every word is distinct and easy to understand, with no muddled sounds or noticeable artifacts. ""运维"" and ""持续性"" are pronounced clearly.
+*   **Overall Naturalness:** Output A achieves a very high level of naturalness. It sounds like a skilled speaker delivering the text, with appropriate emotional nuance and fluid delivery.
+
+**Output B:**
+*   **Prosody and Intonation:** The prosody and intonation are less natural compared to Output A. While the general rise for questions is present, it feels somewhat flatter and less dynamic. There's a tendency for a slightly robotic or synthesized sound in the intonation patterns, lacking the natural variability of human speech.
+*   **Pacing and Rhythm:** The pacing is a bit slower and more deliberate than natural speech would typically be. This makes the rhythm feel slightly unnatural and less fluid. The pauses are also a bit longer, contributing to a less conversational feel.
+*   **Articulation and Clarity:** Articulation is generally clear, and the words are intelligible. However, there's a subtle, almost metallic or synthesized quality to the voice that slightly detracts from the clarity and makes it sound less organic. ""运维"" and ""持续性"" are mostly clear, though ""什么"" in the first question feels slightly less crisp.
+*   **Overall Naturalness:** Output B is clear and understandable, but it distinctly sounds like synthesized speech. It lacks the warmth, dynamic intonation, and fluid pacing that make Output A feel more human.","Output A: 9, Output B: 6
+
+**Detailed Analysis:**
+
+**Output A:**
+*   **Prosody and Intonation:** The prosody and intonation are highly natural. The questions ""你的策略是什么？"" and ""以及是否有持续性等等？"" are delivered with appropriate rising intonation, making them sound like genuine questions. The emphasis on certain words segments (e.g., ""是否有持续性"") is also well-placed, contributing to a human-like delivery.
+*   **Pacing and Rhythm:** The pacing is excellent, maintaining a comfortable and consistent rhythm. There are natural pauses between phrases, which enhance comprehension and mimic human speech patterns.
+*   **Articulation and Clarity:** All words are clearly articulated without any muddled sounds or mispronunciations. The clarity is outstanding.
+*   **Overall Naturalness:** This output is exceptionally natural, sounding very close to a human speaker. The emotional nuance of the questions is particularly wellcaptured.
+
+**Output B:**
+*   **Prosody and Intonation:** The intonation is less natural compared to Output A. The questions ""你的策略是什么？"" and ""以及是否有持续性等等？"" lack the natural rising pitch typically associated with questions in spoken Chinese, making them sound somewhat flat or declarative rather than inquisitive. There's also a slight robotic or 'synthesized' quality to the pitch contours.
+*   **Pacing and Rhythm:** The pacing feels a bit inconsistent, at times rushed, especially towards the end (""等等""). The pauses, while present, sometimes feel slightly unnatural or abrupt, disrupting the overall rhythm.
+*   **Articulation and Clarity:** Words are generally clear and understandable, but there's a minor lack of crispness compared to Output A, and some sounds feel slightly muddled or less defined.
+*   **Overall Naturalness:** This output sounds distinctly like a text-to-speech model. While comprehensible, it lacks the fluidity, natural intonation, and human-like expression found in Output A.","Based on the detailed analysis:
+
+**Output A:**
+*   **Prosody and Intonation:** The intonation is highly natural, particularly for a question (""你的策略是什么？"" and ""是否有持续性等等？""). The pitch changes and emphasis are appropriate and mimic human speech very well.
+*   **Pacing and Rhythm:** The pacing is excellent, not too fast or too slow, with a natural flow. The rhythm feels smooth and consistent.
+*   **Articulation and Clarity:** Articulation is crisp and clear. Every word is easily distinguishable, and there are no signs of mumbling or distortion.
+*   **Overall Naturalness:** This output is exceptionally natural, resembling a human speaker almost indistinguishably in its prosody and clarity.
+
+**Output B:**
+*   **Prosody and Intonation:** The intonation is less natural. The questions (""你的策略是什么？"" and ""是否有持续性等等？"") lack the natural rising intonation expected, making them sound more like statements. The overall tone is somewhat flat.
+*   **Pacing and Rhythm:** The pacing feels a bit slower and less fluid compared to natural speech. There's a slight stiffness in the rhythm.
+*   **Articulation and Clarity:** While generally understandable, there are subtle artificial artifacts or a ""processed"" sound in the voice, particularly noticeable on sibilant sounds (""s"" and ""sh"") and words like ""等等"". The articulation, while clear, lacks the effortless crispness of human speech.
+*   **Overall Naturalness:** This output sounds clearly synthesized. While the words are intelligible, the lack of natural intonation and the presence of audio artifacts significantly detract from its naturalness.
+
+---
+
+**Conclusion:**
+Output A: 10, Output B: 6.5"
+SpeechJudge_eval/rlhfv1_expressive_regular/ints/rlhfv1_expressive_005673/prompt.wav,"The worn leather, once supple and inviting, now hangs limp and lifeless. Its time has passed, like autumn leaves surrendering to winter's chill. I shall cast it aside, making way for new beginnings and fresh possibilities.",SpeechJudge_eval/rlhfv1_expressive_regular/ints/rlhfv1_expressive_005673/output_recovered_audio_temp1.05.wav,SpeechJudge_eval/rlhfv1_expressive_regular/cosyvoice2/rlhfv1_expressive_005673/output_recovered_audio_temp1.0.wav,0,0,B,"**Analysis:**
+
+**Output A:**
+*   **Prosody and Intonation:** This output features a very flat and somewhat monotonous intonation. There is a lack of natural pitch variation and emotional nuance, making the speech sound rather robotic. For instance, the phrase ""now hangs limp and lifeless"" or ""Its time has passed"" doesn't convey the natural decay or passage of time that a human speaker would. Stress is often placed on individual words rather than the natural flow of the sentence.
+*   **Pacing and Rhythm:** The pacing is slow and deliberate, almost to the point of being unnatural. There are noticeable, slightly extended pauses between phrases (""inviting, now hangs"") which break the natural rhythm of speech. The rhythm feels stilted and lacks the fluid connectedness of human conversation.
+*   **Articulation and Clarity:** Articulation is generally clear, and words are understandable. However, there is a distinct low-frequency hum or crackling sound present throughout the entire audio, which detracts significantly from the overall clarity and listening comfort.
+*   **Overall Naturalness:** Due to the flat prosody, stilted pacing, and distracting background noise, Output A sounds quite artificial and fails to achieve a high level of naturalness.
+
+**Output B:**
+*   **Prosody and Intonation:** This output demonstrates much more natural prosody and intonation. The pitch varies appropriately to convey meaning and emotion, for example, the slight decline in tone for ""limp and lifeless"" or ""Its time has passed."" The stress is also naturally placed on key words, enhancing comprehensibility and engagement.
+*   **Pacing and Rhythm:** The pacing is natural and fluid, closely mimicking human speech. Pauses are well-timed and contribute to the overall rhythm without feeling abrupt or extended. The flow between sentences is smooth and cohesive.
+*   **Articulation and Clarity:** Articulation is excellent. Every word is clearly pronounced and easy to understand, with no muddiness or indistinct sounds. There are no distracting background noises.
+*   **Overall Naturalness:** Output B sounds highly natural and human-like. The combination of natural prosody, excellent pacing, and clear articulation makes it a very pleasant and engaging listening experience, closely resembling a human speaker.
+
+---
+
+**Conclusion:**
+
+Output A: 4
+Output B: 9","**Detailed Analysis:**
+
+**Output A:**
+*   **Prosody and Intonation:** The intonation in Output A is highly unnatural and inconsistent. There are abrupt pitch shifts, particularly noticeable on words like ""inviting"" (which rises in an unnatural, almost questioning way) and ""lifeless"" (which drops sharply, almost like a sigh). The overall melodic contour of the sentences feels robotic and lacks the natural ebb and flow of human speech.
+*   **Pacing and Rhythm:** The pacing is slow and somewhat hesitant, with noticeable, unnatural pauses (e.g., after ""inviting""). This contributes to a disjointed feel, making the speech sound less fluid and more like individual words being read out. The rhythm is not natural.
+*   **Articulation and Clarity:** Articulation is generally clear, and words are distinguishable. However, the unnatural pacing and prosody sometimes make it harder to process the phrases smoothly. A significant detractor is the prominent, high-pitched whine that starts after the word ""possible"" and continues throughout the rest of the audio, severely impacting the overall listening experience and clarity.
+*   **Overall Naturalness:** Output A sounds highly artificial. The combination of stiff prosody, awkward pacing, and the distracting high-pitched noise makes it sound like an early-generation TTS model that struggles with emotional nuance and consistent output quality.
+
+**Output B:**
+*   **Prosody and Intonation:** Output B demonstrates excellent prosody and intonation. The pitch contours are natural and appropriate for the text, conveying the intended meaning and emotion effectively. Words like ""worn,"" ""inviting,"" ""lifeless,"" and ""chill"" are delivered with natural emphasis and emotional depth.
+*   **Pacing and Rhythm:** The pacing is very natural and smooth, closely mimicking human speech. Pauses are well-timed and contribute to a clear and coherent flow of information. The rhythm is consistent and pleasant to listen to.
+*   **Articulation and Clarity:** Articulation is superb, with every word being clear, crisp, and distinct. There are no distracting background noises or artifacts, allowing for an easily understandable and enjoyable listening experience.
+*   **Overall Naturalness:** Output B is highly natural and realistic. It sounds very much like a human speaker, making it engaging and easy to follow. The combined strength of its prosody, pacing, and clarity results in a superior auditory experience.
+
+---
+**Conclusion:**
+
+Output A: 3
+Output B: 9","Here's a detailed analysis of the two Text-to-Speech models' outputs:
+
+**Output A:**
+
+*   **Prosody and Intonation:** This output excels inProsody and Intonation. The voice exhibits a natural rise and fall, placing stress on appropriate words (""worn,"" ""inviting,"" ""limp,"" ""lifeless,"" ""passed,"" ""surrendering,"" ""chill""). The emotional tone conveyed feels natural and fits the narrative of衰败与新生 (decreedness and new beginnings).
+*   **Pacing and Rhythm:** The pacing is very natural and consistent. There are well-timed pauses at commas and period, allowing the listener to easily follow the meaning. The rhythm feels fluid and unforced, mimicking human speech patterns effectively.
+*   **Articulation and Clarity:** All words are clearly articulated, and there are no discernible mispronunciations or muffled sounds. The clarity contributes significantly to the overall naturalness.
+*   **Overall Naturalness:** Output A sounds remarkably natural and expressive. It captures the subtle nuances of human speech, making it very pleasant and easy to listen to. While there's a faint underlying synthetic quality, it's so well-integrated that it doesn't detract from the human-like delivery.
+
+**Output B:**
+
+*   **Prosody and Intonation:** The prosody in Output B is less natural. The intonation tends to be flatter and more monotonous, lacking the dynamic range seen in Output A. There are instances where the pitch contour feels unnatural or abrupt, like the rise at ""inviting"" or the somewhat stilted intonation of ""lifeless.""
+*   **Pacing and Rhythm:** The pacing is generally acceptable, and pauses are mostly in the correct places. However, the rhythm can feel a bit choppy or disjointed at times, making the flow less smooth compared to Output A.
+*   **Articulation and Clarity:** Most words are clear, but some lack the crispness and naturalness of articulation found in Output A. For example, ""leather"" sounds slightly elongated, and ""possibilities"" has a somewhat artificial ending.
+*   **Overall Naturalness:** Output B, while clear and understandable, sounds distinctly more synthetic than Output A. The less natural prosody and slightly segmented rhythm contribute to a less human-like listening experience.
+
+---
+
+**Conclusion:**
+
+Output A: 9
+Output B: 6"

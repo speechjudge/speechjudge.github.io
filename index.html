@@ -194,7 +194,10 @@
 
         <div class="mt-8" id="grm">
           <h4>SpeechJudge-GRM</h4>
-          <p class="mb-2">To model human naturalness preferences, we built <b><i>SpeechJudge-GRM</i></b> based on <b><i>SpeechJudge-Data</i></b>, using two main steps: Supervised Fine-Tuning (SFT) and Reinforcement Learning (RL). We further evaluate it on <b><i>SpeechJudge-Eval</i></b>. Some examples are shown below to illustrate how SpeechJudge-GRM works.</p>
+          <p class="mb-2">To model human naturalness preferences, we built <b><i>SpeechJudge-GRM</i></b> based on
+            <b><i>SpeechJudge-Data</i></b>, using two main steps: Supervised Fine-Tuning (SFT) and Reinforcement
+            Learning (RL). We further evaluate it on <b><i>SpeechJudge-Eval</i></b>. Some examples are shown below to
+            illustrate how SpeechJudge-GRM works.</p>
           <div class="flex flex-col mx-auto mb-16 p-6 bg-gray-50 rounded-lg">
             <div v-if="eval_data.length > 0">
               <!-- Case selection buttons -->
@@ -212,6 +215,12 @@
               <div class="flex flex-row">
                 <span class="font-bold text-base text-right pr-4 w-1/6">Prompt</span>
                 <div class="w-5/6">
+
+                  <!-- <p>A: {{ currentGrmEntry.audioA_spell_wrong }}</p>
+                  <p>B: {{ currentGrmEntry.audioB_spell_wrong }}</p>
+                  <p>Audio A: {{ currentGrmEntry.audioA }}</p>
+                  <p>Audio B: {{ currentGrmEntry.audioB }}</p> -->
+
                   <p class="mb-2">
                     We are comparing the naturalness of two text-to-speech models' outputs. The models need to speak the
                     target text accurately and naturally. </p>
@@ -272,6 +281,16 @@
                   <div v-html="currentCompletionHtml" class="gap-2 flex flex-col"></div>
                 </div>
               </div>
+
+
+              <!-- User Prompt Section -->
+              <div class="flex flex-row mt-6">
+                <span class="font-bold text-base text-right pr-4 w-1/6">Human Label</span>
+                <div class="w-5/6">
+                  <p class="mb-2">{{ currentGrmEntry.naturalness_result }}</p>
+                </div>
+              </div>
+
             </div>
             <div v-else class="text-center text-gray-500">
               Loading SpeechJudge-GRM data...
@@ -285,7 +304,9 @@
           <h5 class="mb-3 pt-4 text-2xl font-bold tracking-tight text-gray-900">A. Post-training on Qwen2.5-0.5B-TTS
           </h5>
           <p class="mb-2">
-            To validate the effectiveness of SpeechJudge-GRM, we use it as a "reward function" to post-train the Qwen2.5-0.5B-TTS model. The model is rewarded for generating speech judged as more natural by the GRM, improving its naturalness.</p>
+            To validate the effectiveness of SpeechJudge-GRM, we use it as a "reward function" to post-train the
+            Qwen2.5-0.5B-TTS model. The model is rewarded for generating speech judged as more natural by the GRM,
+            improving its naturalness.</p>
           <p class="mb-2">
             The table below compares the outputs of the base model with three different alignment settings.
           </p>
@@ -328,8 +349,10 @@
 
           <h5 class="mb-3 pt-4 text-2xl font-bold tracking-tight text-gray-900">B. Best-of-N Selection for Qwen2.5-Omni
             (Talker)</h5>
-          <p class="mb-2">We use SpeechJudge-GRM as an automated judge to select the most natural-sounding sample from 100 generated
-            by the Qwen2.5-Omni-Talker TTS model. The table below compares random selection with our proposed reward models.</p>
+          <p class="mb-2">We use SpeechJudge-GRM as an automated judge to select the most natural-sounding sample from
+            100 generated
+            by the Qwen2.5-Omni-Talker TTS model. The table below compares random selection with our proposed reward
+            models.</p>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
             <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
               <thead class="text-sm text-gray-900 font-bold bg-gray-50">
