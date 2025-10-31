@@ -423,21 +423,36 @@
             We investigate the effect of using SpeechJudge-GRM as a reward function for post-training of TTS model.
             Specifically, we develop a new zero-shot TTS model, <b><i>Qwen2.5-0.5B-TTS</i></b>, to serve as the base
             model,
-            which was not involved in the construction of the SpeechJudge-Data. Here are some examples before and after
-            the post-training with different methods:
-            <br>
-            <br>
+            which was not involved in the construction of the SpeechJudge-Data. The compared methods are as follows:
+          <ul class="list-disc pl-6">
+            <li><b>Qwen2.5-0.5B-TTS (Base):</b> The base model without any post-training. Based on it, we use the
+              different methods to perform post-training:</li>
+            <li class="list-[circle] list-inside pl-6 mt-1"><b>w/ SpeechJudge-Data:</b> We use the SpeechJudge-Data to
+              perform <a href="https://arxiv.org/abs/2305.18290">the offline DPO alignment</a>.</li>
+            <li class="list-[circle] list-inside pl-6 mt-1"><b>w/ SpeechJudge-GRM (offline):</b> We use SpeechJudge-GRM
+              as an offline preference data annotator. We take all speech pairs from <a
+                href="https://huggingface.co/datasets/amphion/INTP">the INTP dataset</a> and reannotate
+              their preference labels using SpeechJudge-GRM, then perform offline DPO alignment on
+              the resulting data.</li>
+            <li class="list-[circle] list-inside pl-6 mt-1"><b>w/ SpeechJudge-GRM (online):</b> We use SpeechJudge-GRM
+              as a reward
+              function for <a href="https://arxiv.org/abs/2402.04792">the online DPO algorithm</a>. The training data
+              consists of only the
+              prompts from INTP (i.e., the target texts and speech references for zero-shot TTS).</li>
+          </ul>
+          <br>
+          <br>
           </p>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
             <table class="w-full text-sm text-left rtl:text-right min-w-[800px]">
               <thead class="text-sm text-gray-900 font-bold bg-gray-50">
                 <tr>
-                  <th scope="col" class="px-6 py-3 w-[15%]">Prompt</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">Reference</th>
                   <th scope="col" class="px-6 py-3 w-[25%]">Target Text</th>
                   <th scope="col" class="px-6 py-3 w-[15%]">Base</th>
-                  <th scope="col" class="px-6 py-3 w-[15%]">SpeechJudge-Data</th>
-                  <th scope="col" class="px-6 py-3 w-[15%]">SpeechJudge-GRM (offline)</th>
-                  <th scope="col" class="px-6 py-3 w-[15%]">SpeechJudge-GRM (online)</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">w/ SpeechJudge-Data</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">w/ SpeechJudge-GRM (offline)</th>
+                  <th scope="col" class="px-6 py-3 w-[15%]">w/ SpeechJudge-GRM (online)</th>
                 </tr>
               </thead>
               <tbody>
